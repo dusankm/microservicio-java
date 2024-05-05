@@ -16,26 +16,9 @@ jobs:
         run: |
           mvn package
           #echo 'package'
-      - name: EjecucionTestUnitarios
-        run: |
-          mvn package test
-      - name: Verificar cobertura con JaCoCo
+      - name: EjecucionTestUnitarios  y Verificar cobertura con JaCoCo
         run: |
           mvn verify
-      - name: Generar informe JaCoCo
-        run: |
-          mvn jacoco:report
-      - name: Publicar informe JaCoCo
-        uses: madrapps/jacoco-report@v1.6.1
-        with:
-          paths: ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
-          token: ${{ secrets.SECRET_JACOCO}}
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
-          fail_ci_if_error: true
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
