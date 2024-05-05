@@ -80,7 +80,6 @@ jobs:
       - name: Docker push
         run: 
           docker push dusankm/microservicio-java:lates
-
   #deploy:
    # needs: build
     #runs-on: self-hosted
