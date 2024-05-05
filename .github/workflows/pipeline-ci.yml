@@ -19,6 +19,9 @@ jobs:
       - name: EjecucionTestUnitarios
         run: |
           mvn package test
+      - name: Verificar cobertura con JaCoCo
+        run: |
+          mvn verify
       - name: Generar informe JaCoCo
         run: |
           mvn jacoco:report
